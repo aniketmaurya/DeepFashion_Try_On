@@ -1,0 +1,5 @@
+*.zip
+*.caffemodel
+*.pth
+*.pt
+*.DS_Store
