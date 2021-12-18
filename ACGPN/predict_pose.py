@@ -31,12 +31,14 @@ class general_pose_model(object):
                             [9, 10], [1, 11], [11, 12], 
                             [12, 13], [0, 14], [0, 15], 
                             [14, 16], [15, 17]]
+        print("loading cv2 openpose models")
         prototxt   = os.path.join(
             modelpath, 
             'pose_deploy_linevec.prototxt')
         caffemodel = os.path.join(
             modelpath, 
             'pose_iter_440000.caffemodel')
+        print(f"paths are: {prototxt}, {caffemodel}")
         coco_model = cv2.dnn.readNetFromCaffe(prototxt, caffemodel)
 
         return coco_model
@@ -102,4 +104,4 @@ def generate_pose_keypoints(img_file, pose_file):
     with open(pose_keypoints_path, "w") as outfile: 
         outfile.write(json_object) 
     print('File saved at {}'.format(pose_keypoints_path))
-
+    return res_points
